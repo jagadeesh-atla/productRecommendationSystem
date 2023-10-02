@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home | Product Recommendations</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        {% if logged %}
+        <h1>Hello, {{ user['username'] }}</h1>
+        <button class="btn btn-primary" onclick="window.location.href='/recs/{{ user['_id'] }}'">
+            Recommendations
+        </button>
+        <button class="btn btn-primary" onclick="window.location.href='/logout'">
+            Logout
+        </button>
+        {% else %}
+        <h1>Welcome</h1>
+        <button class="btn btn-primary" onclick="window.location.href='/login'">
+            Login
+        </button>
+        <button class="btn btn-primary" onclick="window.location.href='/signup'">
+            Sign Up
+        </button>
+        {% endif %}
+    </div>
+</body>
+
+</html>

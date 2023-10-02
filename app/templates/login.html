@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <br /><br />
+    <div class="container">
+        <br />
+        <h2 align="center">Login</h2>
+        <br />
+        <div class="col-md-4 col-md-offset-4">
+            <form method="post" id="form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <button type="submit" name="submit" class="btn btn-primary"
+                    onclick="validateForm(event)">Submit</button>
+            </form>
+            <br />
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="messages">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+    </div>
+
+    <script>
+        function validateForm(event) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (username === '') {
+                event.preventDefault();
+                alert("Please enter a username.");
+            } else if (password === '') {
+                event.preventDefault();
+                alert("Please enter a password.");
+            }
+        }
+    </script>
+</body>
+
+</html>
